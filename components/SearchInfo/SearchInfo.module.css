@@ -1,0 +1,17 @@
+.wrapper {
+  font-size: 18px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.searchInfo {
+  font-size: 22px;
+  margin-top: 6px;
+  width: max-content;
+}
+
+.searchInfo > div {
+  margin: 12px 0;
+}

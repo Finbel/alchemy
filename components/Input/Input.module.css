@@ -1,0 +1,16 @@
+.wrapper {
+  margin: 5px;
+  font-size: calc(6px + 1vmin);
+}
+
+.input {
+  border-radius: 5px;
+  background-color: #282c34;
+  border: 1px solid #3b414d;
+  height: 28px;
+  width: 100%;
+  color: #fff;
+  font-size: calc(8px + 1vmin);
+  padding-left: 12px;
+  margin-top: 5px;
+}

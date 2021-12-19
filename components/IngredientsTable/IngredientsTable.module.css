@@ -1,0 +1,5 @@
+.table {
+  border-spacing: 0px;
+  width: 100%;
+  table-layout: fixed;
+}

@@ -1,0 +1,20 @@
+.active {
+  color: #eff6fd;
+}
+
+.inActive {
+  color: #3d434e;
+}
+
+.secondary {
+  color: #5e7972;
+}
+
+.cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 4px 4px;
+  display: table-cell;
+  text-decoration: none;
+}

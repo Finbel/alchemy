@@ -1,0 +1,11 @@
+.filter {
+  border-bottom: 1px solid #3b414d;
+  background-color: #282c34;
+  padding: 10px 14px;
+  width: 100vw;
+  height: min-content;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}

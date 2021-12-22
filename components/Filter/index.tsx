@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC } from "react";
 import { Input } from "../Input";
 import styles from "./Filter.module.css";
-import getEffectNames from "./utils/getEffectNames";
+import getEffectNames from "../../utils/getEffectNames";
 import getIngredientNames from "./utils/getIngredientNames";
 
 type Props = {

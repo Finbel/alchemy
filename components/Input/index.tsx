@@ -18,6 +18,7 @@ export const Input: FC<Props> = ({ label, value, onChange, suggestions }) => {
     <div className={styles.wrapper}>
       <div>{label}: </div>
       <input
+        spellCheck="false"
         value={value}
         onChange={onChange}
         className={styles.input}

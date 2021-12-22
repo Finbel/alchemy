@@ -24,7 +24,7 @@ export const Input: FC<Props> = ({ label, value, onChange, suggestions }) => {
         className={styles.input}
         list={label}
       />
-      {filteredSuggestions?.length && filteredSuggestions[0] !== value && (
+      {!!(filteredSuggestions?.length && filteredSuggestions[0] !== value) && (
         <datalist id={label}>
           {filteredSuggestions.map((suggestion) => (
             <option key={suggestion} value={suggestion} />

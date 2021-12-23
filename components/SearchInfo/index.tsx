@@ -6,22 +6,38 @@ import getIngredientNames from "../Filter/utils/getIngredientNames";
 import styles from "./SearchInfo.module.css";
 
 const getTitleString = (ingredientFilter: string, effectFilter: string) => {
-  if (getIngredientNames().includes(ingredientFilter)) {
+  if (
+    getIngredientNames()
+      .map((name) => name.toLowerCase())
+      .includes(ingredientFilter.toLowerCase())
+  ) {
     return `Effects of ${ingredientFilter}`;
   }
-  if (getEffectNames().includes(effectFilter)) {
+  if (
+    getEffectNames()
+      .map((name) => name.toLowerCase())
+      .includes(effectFilter.toLowerCase())
+  ) {
     return `Ingredients with ${effectFilter}`;
   }
   return "Search for an ingredient or an effect";
 };
 
 const getList = (ingredientFilter: string, effectFilter: string) => {
-  if (getIngredientNames().includes(ingredientFilter)) {
+  if (
+    getIngredientNames()
+      .map((name) => name.toLowerCase())
+      .includes(ingredientFilter.toLowerCase())
+  ) {
     return (
       ingredients.find(({ name }) => name === ingredientFilter)?.effects || []
     );
   }
-  if (getEffectNames().includes(effectFilter)) {
+  if (
+    getEffectNames()
+      .map((name) => name.toLowerCase())
+      .includes(effectFilter.toLowerCase())
+  ) {
     return ingredients
       .filter((ingredient) =>
         filterIngredient(ingredient, ingredientFilter, effectFilter)

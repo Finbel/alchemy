@@ -56,10 +56,13 @@ const SearchInfo: FC<Props> = ({
             onClick={
               ingredientFilter
                 ? () => {
-                    setEffectFilter(string);
                     setIngredientFilter("");
+                    setEffectFilter(string);
                   }
-                : undefined
+                : () => {
+                    setEffectFilter("");
+                    setIngredientFilter(string);
+                  }
             }
           >
             {string}

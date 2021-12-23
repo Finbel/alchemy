@@ -15,7 +15,7 @@ export const Input: FC<Props> = ({ label, value, onChange, suggestions }) => {
     ?.filter((suggestion) =>
       suggestion.toLowerCase().includes(value.toLowerCase())
     )
-    .slice(0, size.width && size.width > 300 ? 10 : 5);
+    .slice(0, size.width && size.width > 500 ? 10 : 5);
   return (
     <div className={styles.wrapper}>
       <div>{label}: </div>

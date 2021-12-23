@@ -1,4 +1,4 @@
-import { Ingredient } from "../../../pages/api/ingredients";
+import { Ingredient } from "../pages/api/ingredients";
 
 const filterIngredient = (
   ingredient: Ingredient,

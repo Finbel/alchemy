@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { ingredients } from "../../pages/api/ingredients";
 import IngredientsTable from "../IngredientsTable";
 import Filter from "../Filter";
-import filterIngredient from "./utils/filterIngredient";
+import filterIngredient from "../../utils/filterIngredient";
 import SearchInfo from "../SearchInfo";
-import useWindowSize from "./utils/useWindowSize";
+import useWindowSize from "../../utils/useWindowSize";
 import styles from "./Alchemy.module.css";
 
 export const Alchemy = () => {
@@ -27,8 +27,10 @@ export const Alchemy = () => {
           <IngredientsTable ingredients={filteredIngredients} />
         ) : (
           <SearchInfo
-            ingredients={filteredIngredients}
+            ingredientFilter={ingredientFilter}
             effectFilter={effectFilter}
+            setEffectFilter={setEffectFilter}
+            setIngredientFilter={setIngredientFilter}
           />
         )}
       </div>

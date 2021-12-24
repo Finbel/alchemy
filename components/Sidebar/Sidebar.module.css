@@ -1,0 +1,38 @@
+.closeButton {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.mobileOpen {
+  background-color: gray;
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  width: 100vw;
+  height: 100vh;
+  transition: transform 0.4s 0.2s ease-out;
+  transform: translateX(100vw);
+}
+
+.desktopOpen {
+  background-color: gray;
+  position: fixed;
+  top: 0;
+  left: -350px;
+  width: 350px;
+  height: 100vh;
+  transition: transform 0.4s 0.2s ease-out;
+  transform: translateX(350px);
+}
+
+.closed {
+  background-color: gray;
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  width: 100vw;
+  height: 100vh;
+  transition: transform 0.4s 0.2s ease-out;
+  transform: translateX(0px);
+}

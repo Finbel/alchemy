@@ -1,8 +1,10 @@
-import React, { ChangeEvent, FC } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
 import { Input } from "../Input";
 import styles from "./Filter.module.css";
 import getEffectNames from "../../utils/getEffectNames";
 import getIngredientNames from "./utils/getIngredientNames";
+import { Sidebar } from "../Sidebar";
+import HamburgerIcon from "../HamburgerIcon";
 
 type Props = {
   ingredientFilter: string;
@@ -17,8 +19,14 @@ const Filter: FC<Props> = ({
   effectFilter,
   setEffectFilter,
 }) => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className={styles.wrapper}>
+      <div onClick={() => setSidebarOpen(true)}>
+        <HamburgerIcon size="m" />
+      </div>
+      <Sidebar open={sidebarOpen} close={() => setSidebarOpen(false)} />
       <div className={styles.filter}>
         <Input
           label={"Ingredient"}

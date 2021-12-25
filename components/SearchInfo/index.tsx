@@ -1,20 +1,24 @@
 import { FC } from "react";
-import { ingredients } from "../../pages/api/ingredients";
-import filterIngredient from "../../utils/filterIngredient";
+import { Ingredient } from "../../pages/api/ingredients";
+import { useIngredients } from "../../providers/IngredientsProvider";
 import getEffectNames from "../../utils/getEffectNames";
-import getIngredientNames from "../Filter/utils/getIngredientNames";
+import getIngredientNames from "../../utils/getIngredientNames";
 import styles from "./SearchInfo.module.css";
 
-const getTitleString = (ingredientFilter: string, effectFilter: string) => {
+const getTitleString = (
+  ingredients: Ingredient[],
+  ingredientFilter: string,
+  effectFilter: string
+) => {
   if (
-    getIngredientNames()
+    getIngredientNames(ingredients)
       .map((name) => name.toLowerCase())
       .includes(ingredientFilter.toLowerCase())
   ) {
     return `Effects of ${ingredientFilter}`;
   }
   if (
-    getEffectNames()
+    getEffectNames(ingredients)
       .map((name) => name.toLowerCase())
       .includes(effectFilter.toLowerCase())
   ) {
@@ -23,9 +27,13 @@ const getTitleString = (ingredientFilter: string, effectFilter: string) => {
   return "Search for an ingredient or an effect";
 };
 
-const getList = (ingredientFilter: string, effectFilter: string) => {
+const getList = (
+  ingredients: Ingredient[],
+  ingredientFilter: string,
+  effectFilter: string
+) => {
   if (
-    getIngredientNames()
+    getIngredientNames(ingredients)
       .map((name) => name.toLowerCase())
       .includes(ingredientFilter.toLowerCase())
   ) {
@@ -34,15 +42,11 @@ const getList = (ingredientFilter: string, effectFilter: string) => {
     );
   }
   if (
-    getEffectNames()
+    getEffectNames(ingredients)
       .map((name) => name.toLowerCase())
       .includes(effectFilter.toLowerCase())
   ) {
-    return ingredients
-      .filter((ingredient) =>
-        filterIngredient(ingredient, ingredientFilter, effectFilter)
-      )
-      .map(({ name }) => name);
+    return ingredients.map(({ name }) => name);
   }
   return [];
 };
@@ -60,8 +64,13 @@ const SearchInfo: FC<Props> = ({
   setEffectFilter,
   setIngredientFilter,
 }) => {
-  const titleString = getTitleString(ingredientFilter, effectFilter);
-  const displayStrings = getList(ingredientFilter, effectFilter);
+  const ingredients = useIngredients();
+  const titleString = getTitleString(
+    ingredients,
+    ingredientFilter,
+    effectFilter
+  );
+  const displayStrings = getList(ingredients, ingredientFilter, effectFilter);
   return (
     <div className={styles.wrapper}>
       {titleString}
@@ -71,14 +80,8 @@ const SearchInfo: FC<Props> = ({
             key={string}
             onClick={
               ingredientFilter
-                ? () => {
-                    setIngredientFilter("");
-                    setEffectFilter(string);
-                  }
-                : () => {
-                    setEffectFilter("");
-                    setIngredientFilter(string);
-                  }
+                ? () => setEffectFilter(string)
+                : () => setIngredientFilter(string)
             }
           >
             {string}

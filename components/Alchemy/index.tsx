@@ -1,18 +1,19 @@
-import React, { useState } from "react";
-import { ingredients } from "../../pages/api/ingredients";
+import React from "react";
 import IngredientsTable from "../IngredientsTable";
 import Filter from "../Filter";
-import filterIngredient from "../../utils/filterIngredient";
 import SearchInfo from "../SearchInfo";
 import useWindowSize from "../../utils/useWindowSize";
 import styles from "./Alchemy.module.css";
+import {
+  useEffectFilter,
+  useIngredientFilter,
+} from "../../providers/FilterProvider";
+import { useIngredients } from "../../providers/IngredientsProvider";
 
 export const Alchemy = () => {
-  const [ingredientFilter, setIngredientFilter] = useState("");
-  const [effectFilter, setEffectFilter] = useState("");
-  const filteredIngredients = ingredients.filter((ingredient) =>
-    filterIngredient(ingredient, ingredientFilter, effectFilter)
-  );
+  const { ingredientFilter, setIngredientFilter } = useIngredientFilter();
+  const { effectFilter, setEffectFilter } = useEffectFilter();
+  const ingredients = useIngredients();
   const size = useWindowSize();
   return (
     <>
@@ -24,7 +25,7 @@ export const Alchemy = () => {
       />
       <div className={styles.content}>
         {size.width && size.width > 500 ? (
-          <IngredientsTable ingredients={filteredIngredients} />
+          <IngredientsTable ingredients={ingredients} />
         ) : (
           <SearchInfo
             ingredientFilter={ingredientFilter}

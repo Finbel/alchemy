@@ -1,11 +1,39 @@
-.filter {
-  border-bottom: 1px solid #3b414d;
-  background-color: #282c34;
-  padding: 10px 14px;
+.wrapper {
+  display: flex;
   width: 100vw;
+  border-bottom: 1px solid #3b414d;
+  padding: 16px 0;
+}
+
+.filter {
+  background-color: #282c34;
   height: min-content;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
+  width: 100%;
+  margin: 0 16px;
+}
+
+.filter > div {
+  max-width: 300px;
+}
+
+.filter > div:first-child {
+  margin-bottom: 12px;
+}
+
+.sidebarIcon {
+  width: 35px;
+  fill: #ededed;
+  margin-left: 16px;
+  margin-top: 7px;
+}
+
+@media screen and (min-width: 500px) {
+  .filter {
+    flex-direction: row;
+  }
 }

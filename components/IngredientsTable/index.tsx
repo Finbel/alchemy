@@ -1,13 +1,11 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 import { Ingredient } from "../../pages/api/ingredients";
 import styles from "./IngredientsTable.module.css";
 import IngredientRow from "./IngredientRow";
+import { useIngredients } from "../../providers/IngredientsProvider";
 
-type Props = {
-  ingredients: Ingredient[];
-};
-
-const IngredientsTable: FC<Props> = ({ ingredients }) => {
+const IngredientsTable = () => {
+  const ingredients = useIngredients();
   const [selectedEffect, setSelectedEffect] = useState<string | undefined>(
     undefined
   );

@@ -1,6 +1,6 @@
-import { ingredients } from "../pages/api/ingredients";
+import { Ingredient } from "../pages/api/ingredients";
 
-const getEffectNames = () => {
+const getEffectNames = (ingredients: Ingredient[]) => {
   return [...new Set(ingredients.map(({ effects }) => effects).flat())];
 };
 

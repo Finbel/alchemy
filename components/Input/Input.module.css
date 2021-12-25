@@ -1,6 +1,6 @@
 .wrapper {
-  margin: 5px;
   font-size: calc(6px + 1vmin);
+  width: 100%;
 }
 
 .input {

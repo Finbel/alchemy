@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import useWindowSize from "../../utils/useWindowSize";
+import CrossIcon from "../CrossIcon";
 import styles from "./Sidebar.module.css";
 
 type Props = {
@@ -7,18 +7,14 @@ type Props = {
   close: () => void;
 };
 
-export const Sidebar: FC<Props> = ({ open, close }) => {
-  const size = useWindowSize();
-  const isDesktop = size.width && size.width > 500;
-
-  const openClass = isDesktop ? styles.desktopOpen : styles.mobileOpen;
-
+export const Sidebar: FC<Props> = ({ open, close, children }) => {
   return (
-    <div className={open ? openClass : styles.closed}>
+    <div className={open ? styles.open : styles.closed}>
       <div style={{ position: "relative" }}>
         <div className={styles.closeButton} onClick={close}>
-          close
+          <CrossIcon />
         </div>
+        <div className={styles.content}>{children}</div>
       </div>
     </div>
   );

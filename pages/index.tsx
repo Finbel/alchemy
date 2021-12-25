@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Alchemy } from "../components/Alchemy";
+import FilterProvider from "../providers/FilterProvider";
+import IngredientsProvider from "../providers/IngredientsProvider";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -11,7 +13,11 @@ const Home: NextPage = () => {
         <meta name="description" content="Helper for alchemy in Skyrim" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Alchemy />
+      <FilterProvider>
+        <IngredientsProvider>
+          <Alchemy />
+        </IngredientsProvider>
+      </FilterProvider>
     </div>
   );
 };

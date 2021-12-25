@@ -25,7 +25,7 @@ export const Alchemy = () => {
       />
       <div className={styles.content}>
         {size.width && size.width > 500 ? (
-          <IngredientsTable ingredients={ingredients} />
+          <IngredientsTable />
         ) : (
           <SearchInfo
             ingredientFilter={ingredientFilter}

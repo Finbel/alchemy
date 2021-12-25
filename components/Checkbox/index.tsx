@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FC } from "react";
+import { ChangeEventHandler, FC } from "react";
 import styles from "./Checkbox.module.css";
 
 type Props = {

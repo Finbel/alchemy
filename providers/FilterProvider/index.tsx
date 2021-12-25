@@ -1,9 +1,11 @@
-import React, {
+import {
   Dispatch,
   FC,
   SetStateAction,
   useEffect,
   useState,
+  createContext,
+  useContext,
 } from "react";
 
 interface PlantableFilter {
@@ -32,10 +34,10 @@ export interface Filter
     IngredientFilter,
     EffectFilter {}
 
-export const FilterContext = React.createContext<Filter | null>(null);
+export const FilterContext = createContext<Filter | null>(null);
 
 export const usePlantable = (): PlantableFilter => {
-  const context = React.useContext(FilterContext);
+  const context = useContext(FilterContext);
   if (!context) {
     throw new Error("usePlantable must be inside the FilterProvider");
   }
@@ -47,7 +49,7 @@ export const usePlantable = (): PlantableFilter => {
 };
 
 export const useFishable = (): FishableFilter => {
-  const context = React.useContext(FilterContext);
+  const context = useContext(FilterContext);
   if (!context) {
     throw new Error("useFishable must be inside the FilterProvider");
   }
@@ -59,7 +61,7 @@ export const useFishable = (): FishableFilter => {
 };
 
 export const useIngredientFilter = (): IngredientFilter => {
-  const context = React.useContext(FilterContext);
+  const context = useContext(FilterContext);
   if (!context) {
     throw new Error("useFishable must be inside the FilterProvider");
   }
@@ -71,7 +73,7 @@ export const useIngredientFilter = (): IngredientFilter => {
 };
 
 export const useEffectFilter = (): EffectFilter => {
-  const context = React.useContext(FilterContext);
+  const context = useContext(FilterContext);
   if (!context) {
     throw new Error("useFishable must be inside the FilterProvider");
   }

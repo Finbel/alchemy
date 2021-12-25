@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FC } from "react";
+import { ChangeEventHandler, FC } from "react";
 import useWindowSize from "../../utils/useWindowSize";
 import styles from "./Input.module.css";
 

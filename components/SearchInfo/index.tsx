@@ -1,5 +1,8 @@
-import { FC } from "react";
 import { Ingredient } from "../../pages/api/ingredients";
+import {
+  useIngredientFilter,
+  useEffectFilter,
+} from "../../providers/FilterProvider";
 import { useIngredients } from "../../providers/IngredientsProvider";
 import getEffectNames from "../../utils/getEffectNames";
 import getIngredientNames from "../../utils/getIngredientNames";
@@ -51,19 +54,9 @@ const getList = (
   return [];
 };
 
-type Props = {
-  ingredientFilter: string;
-  effectFilter: string;
-  setEffectFilter: (effectFilter: string) => void;
-  setIngredientFilter: (ingredientFilter: string) => void;
-};
-
-const SearchInfo: FC<Props> = ({
-  ingredientFilter,
-  effectFilter,
-  setEffectFilter,
-  setIngredientFilter,
-}) => {
+const SearchInfo = () => {
+  const { ingredientFilter, setIngredientFilter } = useIngredientFilter();
+  const { effectFilter, setEffectFilter } = useEffectFilter();
   const ingredients = useIngredients();
   const titleString = getTitleString(
     ingredients,

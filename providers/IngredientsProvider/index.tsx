@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC, useContext, createContext } from "react";
 import { ingredients, Ingredient } from "../../pages/api/ingredients";
 import filterIngredient from "./utils/filterIngredient";
 import {
@@ -8,12 +8,12 @@ import {
   usePlantable,
 } from "../FilterProvider";
 
-export const IngredientContext = React.createContext<Ingredient[] | null>(null);
+export const IngredientContext = createContext<Ingredient[] | null>(null);
 
 export const useIngredients = (): Ingredient[] => {
-  const ingredients = React.useContext(IngredientContext);
+  const ingredients = useContext(IngredientContext);
   if (!ingredients) {
-    throw new Error("useIngredients must be inside the FilterProvider");
+    throw new Error("useIngredients must be inside the IngredientsProvider");
   }
   return ingredients;
 };

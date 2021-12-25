@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import CrossIcon from "../CrossIcon";
 import styles from "./Sidebar.module.css";
 
